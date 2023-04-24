@@ -9,9 +9,9 @@ import Edit from "./pages/Edit"
 import Add from "./pages/Add"
 
 
-// const clerkPublicKey = import.meta.env.VITE_CLERK_PUBLIC_KEY
-const clerkPublicKey = CLERK_PUBLIC_KEY
-console.log(CLERK_PUBLIC_KEY)
+const clerkPublicKey = import.meta.env.VITE_CLERK_PUBLIC_KEY
+// const clerkPublicKey = CLERK_PUBLIC_KEY
+console.log(clerkPublicKey)
 
 function App() {
 
