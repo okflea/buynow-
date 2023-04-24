@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 const Edit = () => {
@@ -8,7 +8,7 @@ const Edit = () => {
   const carId = useParams();
   const [data, setData] = useState(null)
 
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   // console.log(`https://buynowserver-okflea.onrender.com/cars/${carId.id}`)
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +49,15 @@ const Edit = () => {
     // console.log(formData)
   };
 
-  const handleSubmit = async(e) => {
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`https://odd-plum-duckling-sari.cyclic.app/api/cars/${carId.id}`)
+    } catch (error) {
+      console.log(error.message)
+    }
+    navigate('/your-listed-cars')
+  }
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.put(`https://odd-plum-duckling-sari.cyclic.app/api/cars/${carId.id}`, {
@@ -75,6 +83,12 @@ const Edit = () => {
   return (
     <div className="px-9">
       <h1>Edit {data.name} listing</h1>
+      <h1>Or</h1>
+      <button 
+        onClick={handleDelete}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Delete
+      </button>
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-20 flex flex-col gap-4"
         onSubmit={handleSubmit}>
