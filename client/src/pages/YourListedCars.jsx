@@ -12,7 +12,7 @@ const YourListedCars = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://buynowserver-okflea.onrender.com/cars/');
+        const response = await axios.get('https://odd-plum-duckling-sari.cyclic.app/api/cars');
         const data = response.data;
         // console.log(data)
         setData(data)

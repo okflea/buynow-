@@ -12,7 +12,7 @@ const Edit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://buynowserver-okflea.onrender.com/cars/${carId.id}`);
+        const response = await axios.get(`https://odd-plum-duckling-sari.cyclic.app/api/cars/${carId.id}`);
         const dat = response.data;
         console.log(dat)
         setData(dat)
@@ -51,7 +51,7 @@ const Edit = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`https://buynowserver-okflea.onrender.com/cars/${carId.id}`, {
+      const response = await axios.put(`https://odd-plum-duckling-sari.cyclic.app/api/cars/${carId.id}`, {
         ...data,
         img: formData.img,
         MarketPlaceSpec: {

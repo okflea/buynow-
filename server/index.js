@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 const carsRouter = router
-app.use('/cars', carsRouter);
+app.use('/api/cars', carsRouter);
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, 'client/dist')));
