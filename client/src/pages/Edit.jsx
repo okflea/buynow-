@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 
 
 const Edit = () => {
@@ -8,6 +8,7 @@ const Edit = () => {
   const carId = useParams();
   const [data, setData] = useState(null)
 
+  const navigate=useNavigate()
   // console.log(`https://buynowserver-okflea.onrender.com/cars/${carId.id}`)
   useEffect(() => {
     const fetchData = async () => {
@@ -62,6 +63,7 @@ const Edit = () => {
           condition: formData.condition,
         }
       })
+      navigate('/your-listed-cars')
       // console.log(response)
     } catch (error) {
       console.log(error)
