@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 import Toas from "../components/Toas";
+import { useNavigate } from "react-router-dom";
 
 const Add = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     console.log(formData);
   }
+  const navigate = useNavigate();
   const handleSubmit = async(e) => {
     e.preventDefault();
     // setError(true);
@@ -38,6 +40,7 @@ const Add = () => {
     } catch (error) {
       console.log(error)
     }
+    navigate("/your-listed-cars")
   }
   // const [error, setError] = useState(true);
   const [formData, setFormData] = useState({
