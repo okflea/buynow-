@@ -10,6 +10,7 @@ import Add from "./pages/Add"
 
 
 const clerkPublicKey = import.meta.env.VITE_CLERK_PUBLIC_KEY
+console.log(clerkPublicKey)
 
 function App() {
 
