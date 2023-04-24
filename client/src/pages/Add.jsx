@@ -38,7 +38,7 @@ const Add = () => {
       })
       console.log(response)
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
     }
     navigate("/your-listed-cars")
   }
