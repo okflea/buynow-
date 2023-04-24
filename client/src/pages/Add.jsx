@@ -9,37 +9,37 @@ const Add = () => {
   }
   const handleSubmit = async(e) => {
     e.preventDefault();
-    setError(true);
+    // setError(true);
 
-    // try {
-    //   const response = await axios.post(`https://buynowserver-okflea.onrender.com/cars/add`, {
-    //     name: formData.name,
-    //     OEMspec: {
-    //       manufacturer: formData.manufacturer,
-    //       model: formData.model,
-    //       year: Number(formData.year),
-    //       transmission: formData.transmission,
-    //       fuel: formData.fuel,
-    //       color: formData.color,
-    //       power: formData.power,
-    //       torque: formData.torque,
-    //       topSpeed: formData.topSpeed,
-    //     },
-    //     MarketPlaceSpec: {
-    //       price: Number(formData.price),
-    //       odometer: Number(formData.odometer),
-    //       majorDamage: formData.majorDamage,
-    //       priorAccident: formData.priorAccident,
-    //       condition: formData.condition,
-    //     },
-    //     img: formData.img,
-    //   })
-    //   console.log(response)
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    try {
+      const response = await axios.post(`https://odd-plum-duckling-sari.cyclic.app/api/cars/add`, {
+        name: formData.name,
+        OEMspec: {
+          manufacturer: formData.manufacturer,
+          model: formData.model,
+          year: Number(formData.year),
+          transmission: formData.transmission,
+          fuel: formData.fuel,
+          color: formData.color,
+          power: formData.power,
+          torque: formData.torque,
+          topSpeed: formData.topSpeed,
+        },
+        MarketPlaceSpec: {
+          price: Number(formData.price),
+          odometer: Number(formData.odometer),
+          majorDamage: formData.majorDamage,
+          priorAccident: formData.priorAccident,
+          condition: formData.condition,
+        },
+        img: formData.img,
+      })
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
   }
-  const [error, setError] = useState(true);
+  // const [error, setError] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     manufacturer: '',
@@ -108,7 +108,7 @@ const Add = () => {
           <label>Condition:</label>
           <input type="text" required name="condition" value={formData.condition} onChange={handleChange} />
           <button type="submit">Submit</button>
-          {error && <Toas />}
+          {/* {error && <Toas />} */}
         </form>
 
       </div>
