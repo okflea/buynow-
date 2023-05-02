@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="h-screen">
       <Heading />
-      <Carou />
+      {/* <Carou /> */}
     </div>
   )
 }
