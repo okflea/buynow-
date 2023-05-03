@@ -2,6 +2,8 @@ import { UserButton, useUser } from "@clerk/clerk-react"
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { motion } from "framer-motion";
+
 
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -17,6 +19,7 @@ const NavBar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="text-white font-bold text-xl">
+
               BuyNow!
             </Link>
           </div>
@@ -40,14 +43,16 @@ const NavBar = () => {
               >
                 Your Listings
               </Link>
-          {user ? <UserButton /> :
-            <Link
-              to="/login"
-              className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Sign In
-            </Link>
-          }
+              {user ?
+                  <UserButton />
+                :
+                <Link
+                  to="/login"
+                  className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  Sign In
+                </Link>
+              }
             </div>
           </div>
           <div className="md:hidden">
@@ -56,14 +61,34 @@ const NavBar = () => {
               className="text-gray-400 hover:text-white focus:outline-none focus:text-white"
               aria-label="Toggle menu"
             >
-              {isNavOpen ? <FaTimes /> : <FaBars />}
+              {isNavOpen ?
+
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: 180 }}
+                  whileTap={{
+                    scale: 0.8,
+                    rotate: -180,
+                    borderRadius: "100%"
+                  }}>
+                  <FaTimes />
+                </motion.div>
+                :
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: 180 }}
+                  whileTap={{
+                    scale: 0.8,
+                    rotate: -180,
+                    borderRadius: "100%"
+                  }}>
+                  <FaBars />
+                </motion.div>
+              }
             </button>
           </div>
         </div>
         <div
-          className={`${
-            isNavOpen ? "block" : "hidden"
-          } md:hidden transition-all ease-in-out duration-300`}
+          className={`${isNavOpen ? "block" : "hidden"
+            } md:hidden transition-all ease-in-out duration-300`}
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
@@ -84,14 +109,14 @@ const NavBar = () => {
             >
               Your Listings
             </Link>
-          {user ? <UserButton /> :
-            <Link
-              to="/login"
-              className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Sign In
-            </Link>
-          }
+            {user ? <UserButton /> :
+              <Link
+                to="/login"
+                className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Sign In
+              </Link>
+            }
           </div>
         </div>
       </div>
@@ -101,64 +126,3 @@ const NavBar = () => {
 
 export default NavBar;
 
-// import { UserButton, useUser } from "@clerk/clerk-react"
-// import { Navbar } from "flowbite-react"
-// import React from "react"
-// import { useNavigate } from "react-router-dom"
-
-
-// const NavBar = () => {
-//   const navigate = useNavigate()
-//   const path = window.location.pathname
-//   const { user } = useUser()
-
-//   return (
-//     <div >
-//       <Navbar
-//         fluid={true}
-//         dark={true}
-//       // rounded={true}
-//       >
-//         <Navbar.Brand
-//         >
-//           <img
-//             src="https://flowbite.com/docs/images/logo.svg"
-//             className="mr-3 h-6 sm:h-9"
-//             alt="Flowbite Logo"
-//           />
-//           <span className="self-center text-slate-800 whitespace-nowrap text-xl font-semibold dark:text-slate-200">
-//             BuyNow!
-//           </span>
-//         </Navbar.Brand>
-//         <Navbar.Toggle />
-//         <Navbar.Collapse>
-//           <Navbar.Link
-//             onClick={() => navigate("/")}
-//             active={path === "/"}
-//           >
-//             Home
-//           </Navbar.Link>
-//           <Navbar.Link
-//             active={path === "/cars"}
-//             onClick={() => navigate("/cars")}
-//           >
-//             Cars
-//           </Navbar.Link>
-//           <Navbar.Link
-//             active={path === "/your-listed-cars"}
-//             onClick={() => navigate("/your-listed-cars")}
-//           >
-//             Your Listed Cars
-//           </Navbar.Link>
-//           {user ? <UserButton /> :
-//             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => navigate("/login")}>
-//               Sign In
-//             </button>
-//           }
-//         </Navbar.Collapse>
-//       </Navbar>
-//     </div>
-//   )
-// }
-
-// export default NavBar

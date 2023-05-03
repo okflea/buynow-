@@ -17,21 +17,25 @@ function App() {
 
   return (
     <>
-        <BrowserRouter>
+      <BrowserRouter>
         <ClerkProvider publishableKey={clerkPublicKey}>
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cars" element={<Cars />} />
-            <Route path="/login" element={<SignIn />} />
+            <Route path="/login" element={
+              <div className="flex justify-center items-center">
+                <SignIn />
+              </div>
+            } />
 
-              <Route path="/edit/:id" element={<Edit />} />
-              <Route path="/add" element={<Add />} />
-              <Route path="/your-listed-cars" element={<YourListedCars />} />
+            <Route path="/edit/:id" element={<Edit />} />
+            <Route path="/add" element={<Add />} />
+            <Route path="/your-listed-cars" element={<YourListedCars />} />
           </Routes>
           <Foot />
         </ClerkProvider>
-        </BrowserRouter>
+      </BrowserRouter>
     </>
   )
 }
