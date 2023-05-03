@@ -98,7 +98,7 @@ const NavBar = () => {
               Home
             </Link>
             <Link
-              to="/products"
+              to="/cars"
               className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Cars
